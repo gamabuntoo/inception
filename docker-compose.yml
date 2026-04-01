@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  wordpress:
+    image: wordpress
+    ports:
+      - "8089:80"
+    environment:
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: "inception"
+      WORDPRESS_DB_NAME: wordpress
+  mysql:
+    image

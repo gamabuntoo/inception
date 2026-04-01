@@ -1,0 +1,17 @@
+# Commandes pr setup:
+
+-	installation docker
+
+		https://docs.docker.com/engine/install/ubuntu/
+
+
+-	groupe docker
+
+		https://docs.docker.com/engine/install/linux-postinstall (getent group pr voir les groupes)
+
+
+-	tester si docker fonctionne:
+
+	docker run hello-world
+
+
