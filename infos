@@ -14,4 +14,6 @@
 
 	docker run hello-world
 
-
+-	docker image
+	
+		https://www.geeksforgeeks.org/devops/what-is-docker-image/
