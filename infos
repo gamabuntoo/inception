@@ -17,3 +17,12 @@
 -	docker image
 	
 		https://www.geeksforgeeks.org/devops/what-is-docker-image/
+
+
+ouvrir port 443 NGINX, seul point d'entrée
+
+fabriquer image: docker build "path"
+				 docker build -t "name" "path"
+
+lancer image:	 docker run "name given with -t"
+	check running img: docker ps
