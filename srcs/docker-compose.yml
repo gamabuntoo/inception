@@ -20,17 +20,21 @@ services:
       - "9000:9000"
     volumes:
       - wordpress:/var/www/html
-    # ///depends_on:
-    # ////  - ???
+    depends_on:
+      - mariadb
     networks:
       - inception
+    restart: on-failure
   mariadb:
     build: ./requirements/mariadb
     container_name: mariadb
-    env_file: ""
+    env_file:
+      - .env
+    restart: on-failure
   
 volumes:
   wordpress:
+  db:
 
 networks:
   inception:
