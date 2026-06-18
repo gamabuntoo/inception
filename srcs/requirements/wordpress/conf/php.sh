@@ -9,7 +9,6 @@ then
 	sed -i "s/localhost/mariadb/" wp-config.php
 
 	curl -s https://api.wordpress.org/secret-key/1.1/salt/ >> wp-config.php
-
 fi
 
 echo "Mariadb connection from Wordpress..." # waiting till mariadb is on
@@ -19,6 +18,7 @@ do
     sleep 1
 done
 echo "Mariadb online!!!"
+
 
 if ! mysql -h mariadb -u"$MY_SQL_USER" -p"$MY_SQL_PASSWORD" "$MY_SQL_DATABASE" -e "SELECT ID FROM wp_users LIMIT 1;" &> /dev/null #installation wordpress
 then
@@ -37,8 +37,8 @@ then
 	wp config create --path=/var/www/html --dbname="$MY_SQL_DATABASE" --dbuser="$MY_SQL_USER" --dbpass="$MY_SQL_PASSWORD" --dbhost="mariadb" --allow-root
 	wp config shuffle-salts --path=/var/www/html --allow-root
 	wp core install --path=/var/www/html --url="$DOMAIN_NAME" --title="inception?" --admin_user="$WP_USER" --admin_password="$WP_PASS" --admin_email="$WP_MAIL" --skip-email --allow-root
-	wp user create "WP_USER2" "WP_MAIL2" --role=author --user_pass="$WP_PASS2" --path=/var/www/html --allow-root
-	wp user set-role "$WP_USER2" editor --path=/var/www/html --allow-root
+	wp user create "$WP_USER2" "$WP_MAIL2" --role=editor --user_pass="$WP_PASS2" --path=/var/www/html --allow-root
+	# wp user set-role "$WP_USER2" editor --path=/var/www/html --allow-root
 	chown -R www-data:www-data /var/www/html || true
 	# ADMIN_H=$(php -r "echo password_hash('$WP_PASS', PASSWORD_DEFAULT);")
 	# mysql -h mariadb -u"$MY_SQL_USER" -p"$MY_SQL_PASSWORD" "$MY_SQL_DATABASE" -e <<EOF 
