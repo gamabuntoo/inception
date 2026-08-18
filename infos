@@ -26,3 +26,7 @@ fabriquer image: docker build "path"
 
 lancer image:	 docker run "name given with -t"
 	check running img: docker ps
+
+
+
+  PROBLEME USER ET DROITS, VOIR WP CONFIG ET PHP.SH ET MSQL.SH

@@ -5,7 +5,7 @@ FROM debian:bookworm
 	# php-common php-gd php-cli php-curl php-zip php-imagick php-ldap php-intl zip unzip wget curl git && apt-get clean
 
 RUN apt-get update && apt-get upgrade && apt-get install -y curl \
-	php-mysqli php-fpm zip unzip wget curl git && apt-get clean
+	php-mysqli php-fpm zip unzip wget curl git mariadb-client gnupg ca-certificates && apt-get clean
 
 RUN rm -rf /var/lib/apt/lists/*
 # remove apt-get cache bcs it'll be useless until now
@@ -22,7 +22,7 @@ RUN chown -R www-data:www-data /var/www/html/
 RUN find /var/www/html/ -type d -exec chmod 755 {} \;
 RUN find /var/www/html/ -type f -exec chmod 644 {} \;
 
-RUN sed -i 's|listen = .*|listen = 9000|' /etc/php/8.2/fpm/pool.d/www.conf
+RUN sed -i 's|listen = .*|listen = 0.0.0.0:9000|' /etc/php/8.2/fpm/pool.d/www.conf
 #change socket to 9000
 
 EXPOSE 9000
