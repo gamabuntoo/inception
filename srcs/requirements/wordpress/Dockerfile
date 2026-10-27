@@ -4,8 +4,8 @@ FROM debian:bookworm
 	# php php-fpm php-mbstring php-bcmath php-xml php-mysql \
 	# php-common php-gd php-cli php-curl php-zip php-imagick php-ldap php-intl zip unzip wget curl git && apt-get clean
 
-RUN apt-get update && apt-get upgrade && apt-get install -y curl \
-	php-mysqli php-fpm zip unzip wget curl git mariadb-client gnupg ca-certificates && apt-get clean
+RUN apt-get update && apt-get upgrade -y && apt-get install -y curl \
+	php-mysql php-fpm zip unzip wget curl git mariadb-client gnupg ca-certificates && apt-get clean
 
 RUN rm -rf /var/lib/apt/lists/*
 # remove apt-get cache bcs it'll be useless until now
