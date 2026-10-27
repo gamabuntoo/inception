@@ -14,9 +14,9 @@ fclean:
 # 	cd srcs/ && docker compose exec -u root mariadb rm -rf /var/lib/mysql/*
 # 	cd srcs/ && docker compose exec -u root wordpress rm -rf /var/www/html/*
 	cd srcs/ && docker compose down -v --remove-orphans
-	cd srcs/ && sudo chown -R $(UID):$(GID) data/ 
-	cd srcs/data/mariadb/ && rm -rf *
-	cd srcs/data/wordpress/ && rm -rf *
+	cd srcs/ && sudo chown -R $(UID):$(GID) ~/data
+	cd ~/data/mariadb/ && rm -rf *
+	cd ~/data/wordpress/ && rm -rf *
 	cd srcs/ && docker system prune -af --volumes
 
 re: 	
